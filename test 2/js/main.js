@@ -21,16 +21,16 @@ document.querySelector(".add").addEventListener("click", function() {
 });
 */
 
-var array = [];
+var summary = [];
 
 var funcSuma = function() {
 	var sum = 0;
 	var total = document.querySelector(".total");
-	for (i = 0; i < array.length; i++) {
-		sum = sum + Number(array[i].itemQuantity);
+	for (i = 0; i < summary.length; i++) {
+		sum = sum + Number(summary[i].itemQuantity);
 		total.innerHTML = sum;
 	}
-	if (array.length == 0) {
+	if (summary.length == 0) {
 		total.innerHTML = 0;
 	}
 }
@@ -43,7 +43,7 @@ document.querySelector(".add").addEventListener("click", function() {
 		productName: product,
 		itemQuantity: number
 	}
-	array.push(item);
+	summary.push(item);
 	var result = document.querySelector(".result dl");
 	var dt = document.createElement("DT");
 	var dd = document.createElement("DD");
@@ -59,7 +59,7 @@ document.querySelector(".add").addEventListener("click", function() {
 });
 
 document.querySelector(".removeLast").addEventListener("click", function() {
-	array.pop();
+	summary.pop();
 	var result = document.querySelector(".result dl");
 	result.removeChild(result.lastChild);
 	result.removeChild(result.lastChild);
@@ -67,7 +67,7 @@ document.querySelector(".removeLast").addEventListener("click", function() {
 });
 
 document.querySelector(".emptyCarr").addEventListener("click", function() {
-	array = [];
+	summary = [];
 	var result = document.querySelector(".result dl");
 	result.innerHTML = "";
 	funcSuma();
