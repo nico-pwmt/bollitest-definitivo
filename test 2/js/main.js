@@ -28,8 +28,8 @@ var funcSuma = function() {
 	var total = document.querySelector(".total");
 	for (i = 0; i < summary.length; i++) {
 		sum = sum + Number(summary[i].itemQuantity);
-		total.innerHTML = sum;
 	}
+	total.innerHTML = sum;
 	if (summary.length == 0) {
 		total.innerHTML = 0;
 	}
