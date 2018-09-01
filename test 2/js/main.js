@@ -23,6 +23,19 @@ document.querySelector(".add").addEventListener("click", function() {
 
 var array = [];
 
+var funcSuma = function() {
+	var sum = 0;
+	var total = document.querySelector(".total");
+	for (i = 0; i < array.length; i++) {
+		sum = sum + Number(array[i].itemQuantity);
+		total.innerHTML = sum;
+	}
+	if (array.length == 0) {
+		total.innerHTML = 0;
+	}
+}
+
+
 document.querySelector(".add").addEventListener("click", function() {
 	var product = document.querySelector(".product").value;
 	var number = document.querySelector(".number").value;
@@ -40,12 +53,7 @@ document.querySelector(".add").addEventListener("click", function() {
 	dd.appendChild(ddTextNode);
 	result.appendChild(dt);
 	result.appendChild(dd);
-	var total = document.querySelector(".total");
-	var sum = 0;
-	for (i = 0; i < array.length; i++) {
-		sum = sum + Number(array[i].itemQuantity);
-		total.innerHTML = sum;
-	}
+	funcSuma();
 	document.querySelector(".product").value = "";
 	document.querySelector(".number").value = "";
 });
@@ -55,23 +63,12 @@ document.querySelector(".removeLast").addEventListener("click", function() {
 	var result = document.querySelector(".result dl");
 	result.removeChild(result.lastChild);
 	result.removeChild(result.lastChild);
-	var total = document.querySelector(".total");
-	var sum = 0;
-	for (i = 0; i < array.length; i++) {
-		sum = sum + Number(array[i].itemQuantity);
-		total.innerHTML = sum;
-	}
-	if (array.length == 0) {
-		total.innerHTML = 0;
-	}
+	funcSuma();
 });
 
 document.querySelector(".emptyCarr").addEventListener("click", function() {
 	array = [];
 	var result = document.querySelector(".result dl");
 	result.innerHTML = "";
-	var total = document.querySelector(".total");
-	if (array.length == 0) {
-		total.innerHTML = 0;
-	}
+	funcSuma();
 });
