@@ -1,3 +1,9 @@
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .wrap {
     width: 920px;
     margin: 0 auto;
@@ -57,4 +63,9 @@ dl dt:first-child {
     float: right;
     font-family: arial;
     font-size: 20px;
+}
+.related ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
 }
