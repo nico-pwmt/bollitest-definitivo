@@ -126,3 +126,8 @@ document.querySelector(".add9muslims").addEventListener("click", function() {
 	result.appendChild(dd);
 	funcSuma();
 });
+
+document.querySelector("button[tooltip]").addEventListener("mouseover", function() {
+	var tooltipText = document.querySelector("button[tooltip]").getAttribute("tooltip");
+	console.log(tooltipText);
+});
