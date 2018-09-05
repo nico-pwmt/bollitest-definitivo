@@ -47,9 +47,9 @@ document.querySelector(".emptyCarr").addEventListener("click", function() {
 	funcSuma();
 });
 
-document.querySelector(".add2medias").addEventListener("click", function() {
-	var product = "Medias";
-	var number = 2;
+$(".addRelated").on("click", function() {
+	var product = $(this).attr("data-product");
+	var number = $(this).attr("data-quantity");
 	var item = {
 		productName: product,
 		itemQuantity: number
@@ -67,67 +67,10 @@ document.querySelector(".add2medias").addEventListener("click", function() {
 	funcSuma();
 });
 
-document.querySelector(".add1htc").addEventListener("click", function() {
-	var product = "Htc";
-	var number = 1;
-	var item = {
-		productName: product,
-		itemQuantity: number
-	}
-	summary.push(item);
-	var result = document.querySelector(".result dl");
-	var dt = document.createElement("DT");
-	var dd = document.createElement("DD");
-	var dtTextNode = document.createTextNode(product);
-	var ddTextNode = document.createTextNode(number);
-	dt.appendChild(dtTextNode);
-	dd.appendChild(ddTextNode);
-	result.appendChild(dt);
-	result.appendChild(dd);
-	funcSuma();
-});
 
-document.querySelector(".add5bollis").addEventListener("click", function() {
-	var product = "Bollis";
-	var number = 5;
-	var item = {
-		productName: product,
-		itemQuantity: number
-	}
-	summary.push(item);
-	var result = document.querySelector(".result dl");
-	var dt = document.createElement("DT");
-	var dd = document.createElement("DD");
-	var dtTextNode = document.createTextNode(product);
-	var ddTextNode = document.createTextNode(number);
-	dt.appendChild(dtTextNode);
-	dd.appendChild(ddTextNode);
-	result.appendChild(dt);
-	result.appendChild(dd);
-	funcSuma();
-});
-
-document.querySelector(".add9muslims").addEventListener("click", function() {
-	var product = "Muslims";
-	var number = 9;
-	var item = {
-		productName: product,
-		itemQuantity: number
-	}
-	summary.push(item);
-	var result = document.querySelector(".result dl");
-	var dt = document.createElement("DT");
-	var dd = document.createElement("DD");
-	var dtTextNode = document.createTextNode(product);
-	var ddTextNode = document.createTextNode(number);
-	dt.appendChild(dtTextNode);
-	dd.appendChild(ddTextNode);
-	result.appendChild(dt);
-	result.appendChild(dd);
-	funcSuma();
-});
-
-document.querySelector("button[tooltip]").addEventListener("mouseover", function() {
-	var tooltipText = document.querySelector("button[tooltip]").getAttribute("tooltip");
-	console.log(tooltipText);
+$("button[data-tooltip]").hover(function() {
+	var text = $(this).attr("data-tooltip");
+	$(this).append("<span>" + text + "</span>");
+}, function() {
+	$("button[data-tooltip] span").remove();
 });

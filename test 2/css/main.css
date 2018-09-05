@@ -69,3 +69,29 @@ dl dt:first-child {
     padding: 0;
     list-style-position: inside;
 }
+button[data-tooltip] {
+    position: relative;
+    display: inline-block;
+}
+button[data-tooltip] span {
+    position: absolute;
+    background: #000;
+    color: #fff;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 5px;
+    z-index: 1;
+    word-break: keep-all;
+    top: -150%;
+    left: 50%;
+}
+button[data-tooltip] span::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
