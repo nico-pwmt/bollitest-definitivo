@@ -69,23 +69,14 @@ dl dt:first-child {
     padding: 0;
     list-style-position: inside;
 }
-button[data-tooltip] {
-    position: relative;
-    display: inline-block;
-}
-button[data-tooltip] span {
-    position: absolute;
+.tooltip {
     background: #000;
     color: #fff;
-    display: inline-block;
-    padding: 2px 5px;
     border-radius: 5px;
-    z-index: 1;
-    word-break: keep-all;
-    top: -150%;
-    left: 50%;
+    padding: 5px;
+    display: inline-block;
 }
-button[data-tooltip] span::after {
+.tooltip::after {
     content: " ";
     position: absolute;
     top: 100%;

@@ -9,7 +9,6 @@ var funcSuma = function() {
 	total.innerHTML = sum;
 }
 
-
 document.querySelector(".add").addEventListener("click", function() {
 	var product = document.querySelector(".product").value;
 	var number = document.querySelector(".number").value;
@@ -48,8 +47,8 @@ document.querySelector(".emptyCarr").addEventListener("click", function() {
 });
 
 $(".addRelated").on("click", function() {
-	var product = $(this).attr("data-product");
-	var number = $(this).attr("data-quantity");
+	var product = $(this).data("product");
+	var number = $(this).data("quantity");
 	var item = {
 		productName: product,
 		itemQuantity: number
@@ -67,10 +66,16 @@ $(".addRelated").on("click", function() {
 	funcSuma();
 });
 
-
-$("button[data-tooltip]").hover(function() {
-	var text = $(this).attr("data-tooltip");
-	$(this).append("<span>" + text + "</span>");
-}, function() {
-	$("button[data-tooltip] span").remove();
+$("[data-tooltip]").on("mouseenter", function() {
+	var text = $(this).data("tooltip");
+	var tooltip = $("<span class='tooltip'>" + text + "</span>");
+	var pos = $(this).offset();
+	var width = $(this).width();
+	$("body").append(tooltip);
+	var tooltipWidth = tooltip.width();
+	console.log(tooltipWidth);
+	tooltip.offset({top: pos.top - 30, left: pos.left + width / 2 - tooltipWidth / 2});
+}).on("mouseleave", function() {
+	var pos = $(this).offset();
+	$(".tooltip").remove();
 });
