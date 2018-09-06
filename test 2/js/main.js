@@ -73,7 +73,6 @@ $("[data-tooltip]").on("mouseenter", function() {
 	var width = $(this).width();
 	$("body").append(tooltip);
 	var tooltipWidth = tooltip.width();
-	console.log(tooltipWidth);
 	tooltip.offset({top: pos.top - 30, left: pos.left + width / 2 - tooltipWidth / 2});
 }).on("mouseleave", function() {
 	var pos = $(this).offset();
