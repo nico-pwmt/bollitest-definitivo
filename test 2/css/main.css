@@ -75,6 +75,8 @@ dl dt:first-child {
     border-radius: 5px;
     padding: 5px;
     display: inline-block;
+    max-width: 100px;
+    text-align: center;
 }
 .tooltip::after {
     content: " ";
