@@ -16,8 +16,12 @@
     color: red;
     margin: 0 0 10px;
 }
+.main {
+    float: left;
+    width: 676px;
+}
 .aside {
-    float: right;
+    float: left;
     width: 244px;
 }
 dl {
@@ -77,6 +81,7 @@ dl dt:first-child {
     display: inline-block;
     max-width: 100px;
     text-align: center;
+    pointer-events: none;
 }
 .tooltip::after {
     content: " ";
@@ -87,4 +92,33 @@ dl dt:first-child {
     border-width: 5px;
     border-style: solid;
     border-color: black transparent transparent transparent;
+}
+
+.lightbox {
+    position: fixed;
+    z-index: 1;
+    padding: 20px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    display: none;
+}
+.lightbox .close {
+    border-radius: 100%;
+    border: 3px solid #333;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "arial";
+    cursor: pointer;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    background: #fff;
 }
