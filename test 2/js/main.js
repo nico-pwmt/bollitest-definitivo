@@ -72,23 +72,45 @@
 		var text = $(this).data("tooltip");
 		var tooltip = $("<span class='tooltip'>" + text + "</span>");
 		var pos = $(this).offset();
-		var width = $(this).width();
+		var width = $(this).outerWidth();
 		$("body").append(tooltip);
-		var tooltipWidth = tooltip.width();
-		var tooltipHeight = tooltip.height();
-		tooltip.offset({top: pos.top - tooltipHeight - 10, left: pos.left + width / 2 - tooltipWidth / 2});
+		var tooltipWidth = tooltip.outerWidth();
+		var tooltipHeight = tooltip.outerHeight();
+		tooltip.css({"top": pos.top - tooltipHeight - 5, "left": pos.left + width / 2 - tooltipWidth / 2})
 	}).on("mouseleave", function() {
 		var pos = $(this).offset();
 		$(".tooltip").remove();
 	});
 
 	$(".openLightbox").on("click", function() {
-		var height = $(".lightbox").height;
-		var width = $(".lightbox").width;
-		$(".lightbox").css({"display":"block", "margin-top":"-50px", "margin-left":"-70px"});
+		var width = $(".lightbox").outerWidth();
+		var height = $(".lightbox").outerHeight();
+		$(".lightbox").css({"display": "block", "margin-top": - height / 2  , "margin-left": - width / 2});
 	});
 	$(".lightbox .close").on("click", function() {
 		$(".lightbox").css("display", "none");
 	});
 
 })();
+
+/* 
+
+	centrar lightbox con flexbox
+	centrar mediante inline-block
+	SIN CUENTAS
+	agregar y quitar una clase
+
+	limpiar codig
+
+	fondito semi negro de lightbox
+
+	data-tooltip-position: bottom/top/right/left
+
+*/
+
+
+
+/*
+	ubicacion del tooltip en css. quitar el choclo requiere hacer choclo de variables?
+
+*/

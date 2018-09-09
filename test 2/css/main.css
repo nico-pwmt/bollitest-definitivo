@@ -73,6 +73,9 @@ dl dt:first-child {
     padding: 0;
     list-style-position: inside;
 }
+
+/* TOOLTIP */
+
 .tooltip {
     background: #000;
     color: #fff;
@@ -82,6 +85,7 @@ dl dt:first-child {
     max-width: 100px;
     text-align: center;
     pointer-events: none;
+    position: absolute;
 }
 .tooltip::after {
     content: " ";
@@ -94,6 +98,18 @@ dl dt:first-child {
     border-color: black transparent transparent transparent;
 }
 
+/* LIGHTBOX */
+/*
+.holderFlexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}*/
 .lightbox {
     position: fixed;
     z-index: 1;
@@ -108,17 +124,15 @@ dl dt:first-child {
 .lightbox .close {
     border-radius: 100%;
     border: 3px solid #333;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    display: inline-block;
-    text-align: center;
+    width: 46px;
+    height: 46px;
+    line-height: 43px;
     font-size: 30px;
     font-weight: bold;
     font-family: "arial";
     cursor: pointer;
     position: absolute;
-    right: -20px;
-    top: -20px;
+    right: -24px;
+    top: -24px;
     background: #fff;
 }
