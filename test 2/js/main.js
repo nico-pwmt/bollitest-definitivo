@@ -68,6 +68,8 @@
 		funcSuma();
 	});
 
+	/* TOOLTIP */
+
 	$("[data-tooltip]").on("mouseenter", function() {
 		var text = $(this).data("tooltip");
 		var tooltip = $("<span class='tooltip'>" + text + "</span>");
@@ -76,41 +78,64 @@
 		$("body").append(tooltip);
 		var tooltipWidth = tooltip.outerWidth();
 		var tooltipHeight = tooltip.outerHeight();
-		tooltip.css({"top": pos.top - tooltipHeight - 5, "left": pos.left + width / 2 - tooltipWidth / 2})
+		if ($(this).data("tooltip-position") == "bottom") {
+			tooltip.css({"top": pos.top + tooltipHeight / 2, "left": pos.left + width / 2 - tooltipWidth / 2});
+		}	else if ($(this).data("tooltip-position") == "left") {
+			tooltip.css({"top": pos.top, "left": pos.left + width / 2 - tooltipWidth * 2});
+		} else if ($(this).data("tooltip-position") == "right") {
+			tooltip.css({"top": pos.top, "left": pos.left + width + tooltipWidth / 2});
+		} else {
+			tooltip.css({"top": pos.top - tooltipHeight - 5, "left": pos.left + width / 2 - tooltipWidth / 2});
+		}
 	}).on("mouseleave", function() {
 		var pos = $(this).offset();
 		$(".tooltip").remove();
 	});
 
+	/* LIGHTBOXES */
+
 	$(".openLightbox").on("click", function() {
+		$(".holder").css("display", "block");
 		var width = $(".lightbox").outerWidth();
 		var height = $(".lightbox").outerHeight();
-		$(".lightbox").css({"display": "block", "margin-top": - height / 2  , "margin-left": - width / 2});
+		$(".lightbox").css({"margin-top": - height / 2, "margin-left": - width / 2, "display": "block"});
 	});
 	$(".lightbox .close").on("click", function() {
-		$(".lightbox").css("display", "none");
+		$(".holder, .lightbox").css("display", "none");
 	});
 
+	$(".openVertLightbox").on("click", function() {
+		$(".holder").css("display", "block");
+		$(".vertLightbox").css("display", "inline-block")
+	});
+	$(".vertLightbox .close").on("click", function() {
+		$(".holder, .vertLightbox").css("display", "none");
+	});
+
+	$(".openFlexLightbox").on("click", function() {
+		$(".holderFlex").css("display", "flex");
+		$(".flexLightbox").css("display", "flex");
+	});
+	$(".flexLightbox .close").on("click", function() {
+		$(".holderFlex").css("display", "none");
+	})
+
 })();
-
-/* 
-
-	centrar lightbox con flexbox
-	centrar mediante inline-block
-	SIN CUENTAS
-	agregar y quitar una clase
-
-	limpiar codig
-
-	fondito semi negro de lightbox
-
-	data-tooltip-position: bottom/top/right/left
-
-*/
 
 
 
 /*
-	ubicacion del tooltip en css. quitar el choclo requiere hacer choclo de variables?
+
+	quitarle las comillas a las propiedades de objetos en .css() hace q deje de funcionar, what ond ??
+
+	los lightbox y sus respectivos holder no estan lo mas optimamente hechos porq la idea es usar un solo sistema pero para 
+	diferenciar los 3, muchas repeticiones
+
+	vertical align lightbox no me sale :(
+
+	tooltip incompleto para ahorrar tiempo, pero esa es la aproximacion correcta? con if elses ifs?
+	falta limpiar toda la matematica con q solo quite y ponga una clase y acomodarlos mejor y acomodar el pinchito
+
+	data-tooltip-position por default lo manda a "top" por si el atributo no esta aclarado
 
 */
