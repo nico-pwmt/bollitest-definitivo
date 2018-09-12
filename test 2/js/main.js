@@ -73,22 +73,26 @@
 	$("[data-tooltip]").on("mouseenter", function() {
 		var text = $(this).data("tooltip");
 		var tooltip = $("<span class='tooltip'>" + text + "</span>");
-		var pos = $(this).offset();
+		var posX = $(this).offset().left;
+		var posY = $(this).offset().top;
 		var width = $(this).outerWidth();
+		var height = $(this).outerHeight();
 		$("body").append(tooltip);
 		var tooltipWidth = tooltip.outerWidth();
 		var tooltipHeight = tooltip.outerHeight();
 		if ($(this).data("tooltip-position") == "bottom") {
-			tooltip.css({"top": pos.top + tooltipHeight / 2, "left": pos.left + width / 2 - tooltipWidth / 2});
+			tooltip.css({"left": posX + width / 2 - tooltipWidth / 2, "top": posY + height + 5});
+			tooltip.addClass("bottom");
 		}	else if ($(this).data("tooltip-position") == "left") {
-			tooltip.css({"top": pos.top, "left": pos.left + width / 2 - tooltipWidth * 2});
+			tooltip.css({"left": posX - tooltipWidth - 5, "top": posY + height / 2 - tooltipHeight / 2});
+			tooltip.addClass("left");
 		} else if ($(this).data("tooltip-position") == "right") {
-			tooltip.css({"top": pos.top, "left": pos.left + width + tooltipWidth / 2});
+			tooltip.css({"left": posX + width + 5, "top": posY + height / 2 - tooltipHeight / 2});
+			tooltip.addClass("right");
 		} else {
-			tooltip.css({"top": pos.top - tooltipHeight - 5, "left": pos.left + width / 2 - tooltipWidth / 2});
+			tooltip.css({"left": posX + width / 2 - tooltipWidth / 2, "top": posY - tooltipHeight - 5});
 		}
 	}).on("mouseleave", function() {
-		var pos = $(this).offset();
 		$(".tooltip").remove();
 	});
 
@@ -98,23 +102,21 @@
 		$(".holder").css("display", "block");
 		var width = $(".lightbox").outerWidth();
 		var height = $(".lightbox").outerHeight();
-		$(".lightbox").css({"margin-top": - height / 2, "margin-left": - width / 2, "display": "block"});
+		$(".lightbox").css({"margin-top": - height / 2, "margin-left": - width / 2});
 	});
 	$(".lightbox .close").on("click", function() {
-		$(".holder, .lightbox").css("display", "none");
+		$(".holder").css("display", "none");
 	});
 
 	$(".openVertLightbox").on("click", function() {
-		$(".holder").css("display", "block");
-		$(".vertLightbox").css("display", "inline-block")
+		$(".holderVert").css("display", "block");
 	});
 	$(".vertLightbox .close").on("click", function() {
-		$(".holder, .vertLightbox").css("display", "none");
+		$(".holderVert").css("display", "none");
 	});
 
 	$(".openFlexLightbox").on("click", function() {
 		$(".holderFlex").css("display", "flex");
-		$(".flexLightbox").css("display", "flex");
 	});
 	$(".flexLightbox .close").on("click", function() {
 		$(".holderFlex").css("display", "none");
@@ -128,14 +130,18 @@
 
 	quitarle las comillas a las propiedades de objetos en .css() hace q deje de funcionar, what ond ??
 
-	los lightbox y sus respectivos holder no estan lo mas optimamente hechos porq la idea es usar un solo sistema pero para 
-	diferenciar los 3, muchas repeticiones
+	toortip math
 
-	vertical align lightbox no me sale :(
+*/
 
-	tooltip incompleto para ahorrar tiempo, pero esa es la aproximacion correcta? con if elses ifs?
-	falta limpiar toda la matematica con q solo quite y ponga una clase y acomodarlos mejor y acomodar el pinchito
+/* ----------------------- */
 
-	data-tooltip-position por default lo manda a "top" por si el atributo no esta aclarado
+/* 
+
+	dijiste si un elemento tiene POSITION, el DISPLAY no hace nada. pero si tiene RELATIVE no lo transofmra en INLINE-BLOCK,
+	por lo q hay q definirle los dos, no? el display es inutil solo cuando es position absolute?
+
+	no se si la solucion q esperabas era darle una pseudo clase al holder del vertical align lightbox (.holderVert:before)
+	pero es la mejor solucion q encontre pq la otra requeria darle tremendo line height y eso es problema
 
 */

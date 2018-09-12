@@ -1,4 +1,4 @@
-.clearfix::after {
+.clearfix:after {
     content: "";
     clear: both;
     display: table;
@@ -81,12 +81,12 @@ dl dt:first-child {
     color: #fff;
     border-radius: 5px;
     padding: 5px;
-    max-width: 100px;
+    max-width: 150px;
     text-align: center;
     pointer-events: none;
     position: absolute;
 }
-.tooltip::after {
+.tooltip:after {
     content: "";
     position: absolute;
     top: 100%;
@@ -94,6 +94,26 @@ dl dt:first-child {
     margin-left: -5px;
     border: 5px solid transparent;
     border-top-color: #000;
+}
+.tooltip.bottom:after {
+    top: -10px;
+    border-top-color: transparent;
+    border-bottom-color: #000;
+}
+.tooltip.left:after {
+    top: 50%;
+    left: unset;
+    right: -10px;
+    margin-top: -5px;
+    border-top-color: transparent;
+    border-left-color: #000;
+}
+.tooltip.right:after {
+    top: 50%;
+    left: -5px;
+    margin-top: -5px;
+    border-top-color: transparent;
+    border-right-color: #000;
 }
 
 /* LIGHTBOXES */
@@ -109,13 +129,40 @@ dl dt:first-child {
     z-index: 1;
     text-align: center;
 }
+.holderVert {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    text-align: center;
+}
+.holderVert:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.holderFlex {
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
 .lightbox {
     position: fixed;
     padding: 20px;
     border: 3px solid #333;
     border-radius: 10px;
     background: #fff;
-    display: none;
     left: 50%;
     top: 50%;
 }
@@ -125,7 +172,7 @@ dl dt:first-child {
     border: 3px solid #333;
     border-radius: 10px;
     background: #fff;
-    display: none;
+    display: inline-block;
     vertical-align: middle;
 }
 .flexLightbox {
@@ -151,16 +198,4 @@ dl dt:first-child {
     right: -24px;
     top: -24px;
     background: #fff;
-}
-
-.holderFlex {
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: none;
 }

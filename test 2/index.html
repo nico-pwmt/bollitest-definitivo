@@ -30,13 +30,13 @@
       <input type="text" class="product"><br><br>
       <span>Cantidad</span>
       <input type="number" class="number">
-      <button class="add">Add</button><br><br>
+      <button class="add" data-tooltip="dog" data-tooltip-position="right">Add</button><br><br>
       <button class="openLightbox">LIGHTBOX</button><br>
       <button class="openVertLightbox">LIGHTBOX WITH VERTICAL ALIGN</button><br>
       <button class="openFlexLightbox">LIGHTBOX WITH FLEX</button>
     </div>
     <div class="aside">
-      <div class="result">
+      <div class="result" data-tooltip="cajita" data-tooltip-position="left">
         <dl>
         </dl>
         <div class="total">
@@ -44,7 +44,9 @@
       </div>
       <div class="clearfix">
         <button class="removeLast" data-tooltip="la reconcha de tu remil vieja">Remove last</button>
-        <button class="emptyCarr" data-tooltip="jejejeje">Empty carrito</button>
+        <button class="emptyCarr" data-tooltip="la reconcha de tu remil vieja" data-tooltip-position="bottom">Empty carrito</button>
+        <button class="removeLast" data-tooltip="la reconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha dereconcha de tu remil vieja" data-tooltip-position="left">TEST BUTTON</button>
+        <button class="emptyCarr" data-tooltip="la reconcha de tu remil vieja" data-tooltip-position="right">TEST BUTTON</button>
       </div>
       <div class="related">
         <h3>Related products</h3>
@@ -63,6 +65,8 @@
       <button class="close">X</button>
       <p>dis is lightbox</p>
     </div>
+  </div>
+  <div class="holderVert">
     <div class="vertLightbox">
       <button class="close">X</button>
       <p>dis is vertical align lightbox</p>
