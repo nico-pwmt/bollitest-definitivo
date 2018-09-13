@@ -126,9 +126,19 @@ dl dt:first-child {
     left: 0;
     right: 0;
     display: none;
-    z-index: 1;
     text-align: center;
 }
+.lightbox {
+    position: fixed;
+    padding: 20px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    background: #fff;
+    left: 50%;
+    top: 50%;
+    display: none;
+}
+
 .holderVert {
     background: rgba(0,0,0,0.7);
     position: fixed;
@@ -138,33 +148,13 @@ dl dt:first-child {
     right: 0;
     display: none;
     text-align: center;
+    white-space: nowrap;
 }
 .holderVert:before {
   content: "";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
-}
-.holderFlex {
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: none;
-}
-
-.lightbox {
-    position: fixed;
-    padding: 20px;
-    border: 3px solid #333;
-    border-radius: 10px;
-    background: #fff;
-    left: 50%;
-    top: 50%;
 }
 .vertLightbox {
     position: relative;
@@ -174,6 +164,20 @@ dl dt:first-child {
     background: #fff;
     display: inline-block;
     vertical-align: middle;
+    max-width: 90%;
+    white-space: normal;
+}
+
+.holderFlex {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
 }
 .flexLightbox {
     position: relative;
@@ -182,6 +186,7 @@ dl dt:first-child {
     border-radius: 10px;
     background: #fff;
 }
+
 .lightbox .close,
 .vertLightbox .close,
 .flexLightbox .close {

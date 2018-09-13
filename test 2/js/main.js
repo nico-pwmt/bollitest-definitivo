@@ -70,78 +70,96 @@
 
 	/* TOOLTIP */
 
+	var $tooltip;
+
 	$("[data-tooltip]").on("mouseenter", function() {
 		var text = $(this).data("tooltip");
-		var tooltip = $("<span class='tooltip'>" + text + "</span>");
+		$tooltip = $("<span class='tooltip'>" + text + "</span>");
 		var posX = $(this).offset().left;
 		var posY = $(this).offset().top;
 		var width = $(this).outerWidth();
 		var height = $(this).outerHeight();
-		$("body").append(tooltip);
-		var tooltipWidth = tooltip.outerWidth();
-		var tooltipHeight = tooltip.outerHeight();
+		$("body").append($tooltip);
+		var tooltipWidth = $tooltip.outerWidth();
+		var tooltipHeight = $tooltip.outerHeight();
+		var tooltipPositionX = 0;
+		var tooltipPositionY = 0;
+
 		if ($(this).data("tooltip-position") == "bottom") {
-			tooltip.css({"left": posX + width / 2 - tooltipWidth / 2, "top": posY + height + 5});
-			tooltip.addClass("bottom");
+			tooltipPositionX = posX + width / 2 - tooltipWidth / 2;
+			tooltipPositionY = posY + height + 5;
+			$tooltip.addClass("bottom");																					// var
 		}	else if ($(this).data("tooltip-position") == "left") {
-			tooltip.css({"left": posX - tooltipWidth - 5, "top": posY + height / 2 - tooltipHeight / 2});
-			tooltip.addClass("left");
+			tooltipPositionX = posX - tooltipWidth - 5;
+			tooltipPositionY = posY + height / 2 - tooltipHeight / 2;
+			$tooltip.addClass("left");
 		} else if ($(this).data("tooltip-position") == "right") {
-			tooltip.css({"left": posX + width + 5, "top": posY + height / 2 - tooltipHeight / 2});
-			tooltip.addClass("right");
+			tooltipPositionX = posX + width + 5;
+			tooltipPositionY = posY + height / 2 - tooltipHeight / 2;
+			$tooltip.addClass("right");
 		} else {
-			tooltip.css({"left": posX + width / 2 - tooltipWidth / 2, "top": posY - tooltipHeight - 5});
+			tooltipPositionX = posX + width / 2 - tooltipWidth / 2;
+			tooltipPositionY = posY - tooltipHeight - 5;
 		}
+		$tooltip.css({left: tooltipPositionX, top: tooltipPositionY});
 	}).on("mouseleave", function() {
-		$(".tooltip").remove();
+		$tooltip.remove();
 	});
 
 	/* LIGHTBOXES */
 
 	$(".openLightbox").on("click", function() {
-		$(".holder").css("display", "block");
+		$(".holder, .lightbox").show();
 		var width = $(".lightbox").outerWidth();
 		var height = $(".lightbox").outerHeight();
-		$(".lightbox").css({"margin-top": - height / 2, "margin-left": - width / 2});
+		$(".lightbox").css({"margin-top": - height / 2, "margin-left": - width / 2});       // limpiar
 	});
-	$(".lightbox .close").on("click", function() {
-		$(".holder").css("display", "none");
+	$(".lightbox .close, .holder").on("click", function() {
+		$(".holder, .lightbox").hide();                        // clase
 	});
 
 	$(".openVertLightbox").on("click", function() {
-		$(".holderVert").css("display", "block");
+		$(".holderVert").show();
 	});
 	$(".vertLightbox .close").on("click", function() {
-		$(".holderVert").css("display", "none");
+		$(".holderVert").hide();
 	});
 
 	$(".openFlexLightbox").on("click", function() {
 		$(".holderFlex").css("display", "flex");
 	});
 	$(".flexLightbox .close").on("click", function() {
-		$(".holderFlex").css("display", "none");
+		$(".holderFlex").hide();
 	})
+
+	/* AUTOCOMPLETE */
+
+	var paises = ["Argentina", "dogistan", "sarasaland", "zaragoza"];
 
 })();
 
 
 
-/*
-
-	quitarle las comillas a las propiedades de objetos en .css() hace q deje de funcionar, what ond ??
-
-	toortip math
-
-*/
-
-/* ----------------------- */
 
 /* 
 
-	dijiste si un elemento tiene POSITION, el DISPLAY no hace nada. pero si tiene RELATIVE no lo transofmra en INLINE-BLOCK,
-	por lo q hay q definirle los dos, no? el display es inutil solo cuando es position absolute?
+	autocomplete 
+	solo sugiere a partir de 3 caracteres
+	consulta ajax jquery --
+	hacer un array 
+	cualquier input con clase js-suggest
 
-	no se si la solucion q esperabas era darle una pseudo clase al holder del vertical align lightbox (.holderVert:before)
-	pero es la mejor solucion q encontre pq la otra requeria darle tremendo line height y eso es problema
+
+*/
+
+
+
+
+
+/*
+
+	por q TEST BUTTONS no funcionan? solo detecta el primero? why?
+
+	show() y hide() en vez de clases?
 
 */
