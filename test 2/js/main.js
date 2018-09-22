@@ -113,13 +113,13 @@
 	/* LIGHTBOXES */
 
 	$(".openLightbox").on("click", function() {
-		$(".holder, .lightbox").show();
+		$(".holder, .lightbox").removeClass("is-hidden");
 		var width = $(".lightbox").outerWidth();
 		var height = $(".lightbox").outerHeight();
 		$(".lightbox").css({"margin-top": - height / 2, "margin-left": - width / 2});       // limpiar
 	});
 	$(".lightbox .close, .holder").on("click", function() {
-		$(".holder, .lightbox").hide();
+		$(".holder, .lightbox").addClass("is-hidden");
 	});
 
 	$(".openVertLightbox").on("click", function() {
@@ -191,17 +191,21 @@
 	$(".multidimensionalArray").on("click", function() {
 		console.log(multidimensional);
 	});
+
+
+
 	/*
-	--- VERSION SOLO BI-DIMENSIONAL, WORTH IT? ---
+	// --- VERSION SOLO BI-DIMENSIONAL, WORTH IT? ---
 	$(".flattenArray").on("click", function() {
 		console.log(multidimensional.flat());
 	});
 	*/
-	
+	/*
+	// ------- EL POSTA -------
 	function flatten(arr) {
 		return arr.reduce((accumulator, currentValue) =>  Array.isArray(currentValue) ? accumulator.concat(flatten(currentValue)) : accumulator.concat(currentValue), []);
 	}
-	
+	*/
 	/*
 	// --- TRATE DE PASARLO A ES5, Q ESTA MAL? (el "?" y ":" falla al pasarlo a if else idk why) ---
 	function flatten(arr) {
@@ -214,6 +218,19 @@
 		}, []);
 	}
 	*/
+	
+	// -------- MI INTENTO --------
+	
+	function flatten(arr) {
+		for (var i = 0; i < multidimensional.length; i++) {
+			if (Array.isArray(multidimensional[i])) {
+				[i].flat()
+			} else {
+
+			}
+		}
+	};
+	
 
 	$(".flattenArray").on("click", function() {
 		console.log(flatten(multidimensional));
@@ -224,13 +241,15 @@
 	/* CHESS BOARD */
 
 	var message = $(".chessBoard .message");
-	$(".chessBoard td").on("click", function() {
-		message.html("The position is " + Math.floor($(this).offset().left) + " X and " + Math.floor($(this).offset().top) + " Y");
+	$(".chessBoard .square").on("click", function() {
+		var posX = $(this).data("position-x");
+		var posY = $(this).data("position-y");
+		message.html("The position is " + posX + posY);
 		setTimeout(function() {
 			message.html("")
 		}, 1000)
 	});
-
+	
 })();
 
 
@@ -242,16 +261,33 @@
 
 
 
+
 /*
 
-	autocomplete
+	CHESSBOARD
+	lo iba a hacer con grid pero despues decis q no debo mirar en internet como se hace 
+
+	LIGHTBOX con clases. asi es?
+	
+
+*/
+
+
+
+/*
+
+	AUTOCOMPLETE
+
+SUGERENCIAS:
+- el tooltip de las sugerencias aparecen instantaneo en vez de a los 3 caracteres
+- no se oculta al clickear afuera
+- no se oculta al clickear un item
+- es transparente y tapa todo
+
 	solo sugiere a partir de 3 caracteres
 	consulta ajax jquery --
 	hacer un array
 	cualquier input con clase js-suggest
-
-
-
 
 	+3 caracteres pasa algo
 	-3 otra cosa
@@ -263,33 +299,14 @@
 
 	valores del objeto debajo del input
 
+ARRAY FLAT:
+- estoy 100% seguro q copypasteaste codigo, si bien hay funciones de array que aplanan el array por vos, la idea es hacerlo vos mismo algoritmicamente (iterando por el array y agregnado/sacando elementos para armar uno plano) fijate si te sale
+- es jodido el ejercicio, trata de primero pensarlo en papel y dejar la parte de programacion de lado, fijate como lo harias bidimensionalmente primero paso por paso y dsp lo haces multidimensional para agregar dificultad
 
+TABLERO:
+- el mensaje lo ocultas con un timeout de un segundo. eso funciona siempre y cuando no hagas dos o muchos clicks seguidos, entendes por que? trata de arreglar eso. idealmente, que se oculte despues de 1 segundo de no clickear otra celda
 
-
-
-
-
-
-
-
-
-
-	cookies vs localstorage vs sessionstorage
-	consultas http tipos get post
-	objetos
-
-*/
-
-
-
-
-
-/*
-
-	por q TEST BUTTONS no funcionan? solo detecta el primero? why?
-
-	show() y hide() en vez de clases?
-
-	lightboxes sin holder como padre, se compli
+-  lightboxes sin holder como padre, se compli
+no tengo idea que significa esta pregunta :)
 
 */

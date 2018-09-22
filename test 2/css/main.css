@@ -122,6 +122,10 @@ dl dt:first-child {
 
 /* LIGHTBOXES */
 
+.is-hidden {
+    display: none;
+}
+
 .holder {
     background: rgba(0,0,0,0.7);
     position: fixed;
@@ -129,7 +133,6 @@ dl dt:first-child {
     bottom: 0;
     left: 0;
     right: 0;
-    display: none;
     text-align: center;
 }
 .lightbox {
@@ -140,7 +143,6 @@ dl dt:first-child {
     background: #fff;
     left: 50%;
     top: 50%;
-    display: none;
 }
 
 .holderVert {
@@ -243,19 +245,24 @@ dl dt:first-child {
 }
 .chessBoard .message {
     position: absolute;
-    left: -250px;
+    left: -200px;
     top: 30%;
     width: 250px;
 }
-.chessBoard table {
-    border: 2px solid #000;
-    width: 600px;
-    height: 600px;
-    box-sizing: border-box;
+.chessBoard .square {
+    float: left;
+    width: 76px;
+    height: 76px;
+    border: 1px solid grey;
 }
-.chessBoard tr:nth-child(odd) td:nth-child(even) {
-    background: #000;
-}
-.chessBoard tr:nth-child(even) td:nth-child(odd) {
-    background: #000;
+
+.square:nth-child(-2n+8), 
+.square:nth-child(8) ~ .square:nth-child(-2n+15), 
+.square:nth-child(16) ~ .square:nth-child(-2n+24),
+.square:nth-child(24) ~ .square:nth-child(-2n+31),
+.square:nth-child(32) ~ .square:nth-child(-2n+40),
+.square:nth-child(40) ~ .square:nth-child(-2n+47),
+.square:nth-child(48) ~ .square:nth-child(-2n+56),
+.square:nth-child(56) ~ .square:nth-child(-2n+63) {
+    background-color: #000;
 }
