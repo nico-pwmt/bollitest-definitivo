@@ -240,13 +240,65 @@
 
 	/* CHESS BOARD */
 
-	var message = $(".chessBoard .message");
-	$(".chessBoard .square").on("click", function() {
-		var posX = $(this).data("position-x");
-		var posY = $(this).data("position-y");
+	var message = $(".chessboard .message");
+	$(".chessboard .square").on("click", function() {
+		var posX = $(this).index();
+		var posY = $(this).parent().index();
+		switch (posX) {
+			case 0:
+				posX = "a";
+				break;
+			case 1:
+				posX = "b";
+				break;
+			case 2:
+				posX = "c";
+				break;
+			case 3:
+				posX = "d";
+				break;
+			case 4:
+				posX = "e";
+				break;
+			case 5:
+				posX = "f";
+				break;
+			case 6:
+				posX = "g";
+				break;
+			case 7:
+				posX = "h";
+				break;
+		}
+		switch (posY) {
+			case 0:
+				posY = 8;
+				break;
+			case 1:
+				posY = 7;
+				break;
+			case 2:
+				posY = 6;
+				break;
+			case 3:
+				posY = 5;
+				break;
+			case 4:
+				posY = 4;
+				break;
+			case 5:
+				posY = 3;
+				break;
+			case 6:
+				posY = 2;
+				break;
+			case 7:
+				posY = 1;
+				break;
+		}
 		message.html("The position is " + posX + posY);
 		setTimeout(function() {
-			message.html("")
+			message.html("");
 		}, 1000)
 	});
 	
@@ -264,8 +316,6 @@
 
 /*
 
-	CHESSBOARD
-	lo iba a hacer con grid pero despues decis q no debo mirar en internet como se hace 
 
 	LIGHTBOX con clases. asi es?
 	
@@ -302,6 +352,12 @@ SUGERENCIAS:
 ARRAY FLAT:
 - estoy 100% seguro q copypasteaste codigo, si bien hay funciones de array que aplanan el array por vos, la idea es hacerlo vos mismo algoritmicamente (iterando por el array y agregnado/sacando elementos para armar uno plano) fijate si te sale
 - es jodido el ejercicio, trata de primero pensarlo en papel y dejar la parte de programacion de lado, fijate como lo harias bidimensionalmente primero paso por paso y dsp lo haces multidimensional para agregar dificultad
+
+estas usando flat() de nuevo, la idea es aplanar el array "a mano", solo iterando (for) y agregando/sacando elementos (push/pop). intenta primero con un array de 2 dimensiones nomas y pensa como lo harias paso por paso y dsp traducilo a codigo
+
+
+
+
 
 TABLERO:
 - el mensaje lo ocultas con un timeout de un segundo. eso funciona siempre y cuando no hagas dos o muchos clicks seguidos, entendes por que? trata de arreglar eso. idealmente, que se oculte despues de 1 segundo de no clickear otra celda
