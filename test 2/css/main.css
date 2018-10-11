@@ -1,3 +1,8 @@
+input {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
 .clearfix:after {
     content: "";
     clear: both;
@@ -123,7 +128,7 @@ dl dt:first-child {
 /* LIGHTBOXES */
 
 .is-hidden {
-    display: none;
+    display: none !important;
 }
 
 .holder {
@@ -152,7 +157,6 @@ dl dt:first-child {
     bottom: 0;
     left: 0;
     right: 0;
-    display: none;
     text-align: center;
     white-space: nowrap;
 }
@@ -181,9 +185,9 @@ dl dt:first-child {
     bottom: 0;
     left: 0;
     right: 0;
-    display: none;
     align-items: center;
     justify-content: center;
+    display: flex;
 }
 .flexLightbox {
     position: relative;
@@ -211,18 +215,10 @@ dl dt:first-child {
     background: #fff;
 }
 
-
-
 /* AUTOCOMPLETE */
 
-.suggestions {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-.suggestions li:hover {
-    background: blue;
+.valid {
+    border: solid green 2px;
 }
 
 
@@ -236,12 +232,36 @@ dl dt:first-child {
     padding: 20px;
 }
 
-
-
 /* CHESS BOARD */
 
 .chessboard {
     position: relative;
+}
+.chessboard-row {
+    display: flex;
+}
+.chessboard .square {
+    width: 46px;
+    height: 46px;
+    border: 1px solid grey;
+}
+.chessboard .square.horsie:after {
+    content: "H";
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-family: arial;
+    color: #00f;
+    font-weight: bold;
+    border: 2px solid #00f;
+    border-radius: 100%;
+    display: block;
+    margin: 6px auto;
+}
+.chessboard-row:nth-child(even) .square:nth-child(even), 
+.chessboard-row:nth-child(odd) .square:nth-child(odd) {
+  background: #000;
 }
 .chessboard .message {
     position: absolute;
@@ -249,13 +269,33 @@ dl dt:first-child {
     top: 100px;
     width: 250px;
 }
-.chessboard .square {
-    float: left;
-    width: 76px;
-    height: 76px;
-    border: 1px solid grey;
+
+/* LOG */
+
+.log {
+    background: #00f;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin: 20px auto;
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    font-family: arial;
 }
-.chessboard-row:nth-child(even) .square:nth-child(even), 
-.chessboard-row:nth-child(odd) .square:nth-child(odd) {
-  background: #000;
+
+/* FIBONACCI */
+
+.fibNumber {
+    width: 50px;
+}
+.fibLogger {
+    background: #32cd32;
+    width: 175px;
+    height: 175px;
+    border-radius: 100%;
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+    font-family: arial;
 }
